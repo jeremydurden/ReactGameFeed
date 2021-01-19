@@ -1,71 +1,98 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './LoginPage.css';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
-import { useForm } from '../../hooks/useForm';
-import userService from '../../utils/userService';
+import React, { useState } from "react";
+import "./LoginPage.css";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import userService from "../../utils/userService";
+import { useHistory, Link } from "react-router-dom";
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment,
+} from "semantic-ui-react";
 
-export default function LoginPage(props){
-    const [invalidForm, setValidForm] = useState(false);
-    const [error, setError ]          = useState('')
-    const [state, handleChange]       = useForm({
-        email: '',
-        pw: '',
-    })
-  
-    const formRef = useRef();
+export default function LoginPage(props) {
+  const [invalidForm, setValidForm] = useState(false);
+  const [error, setError] = useState("");
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
 
-    useEffect(() => {
-      formRef.current.checkValidity() ? setValidForm(false) : setValidForm(true);
+  const history = useHistory();
+
+  function handleChange(e) {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
     });
+  }
 
-    return (
-        <>
-          <h1>Login</h1>
-          <form  autoComplete="off" ref={formRef} onSubmit={async (e) => {
-            e.preventDefault()
-            
-            try {
-                await userService.login(state);
-                // Route to wherever you want!
-                alert("Logged in, time to go code where you want to go now! ~ Login Component!")
-              } catch (err) {
-                // Invalid user data (probably duplicate email)
-                setError(err.message)
-              }
-          }}>
-            <div className="form-group">
-              <input
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      console.log(state, "this is state");
+      console.log(props, "this is props");
+      await userService.login(state);
+      // Route to wherever you want!
+      props.handleSignupOrLogin(); //
+      history.push("/");
+    } catch (err) {
+      // Invalid user data (probably duplicate email)
+      setError(err.message);
+    }
+  }
+
+  return (
+    <>
+      <Grid
+        textAlign="center"
+        style={{ height: "100vh" }}
+        verticalAlign="middle"
+      >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as="h2" color="teal" textAlign="center">
+            <span>Log-in to your account</span>
+          </Header>
+          <Form autoComplete="off" onSubmit={handleSubmit}>
+            <Segment stacked>
+              <Form.Input
                 type="email"
-                className="form-control"
                 name="email"
                 placeholder="email"
-                value={ state.email}
+                value={state.email}
                 onChange={handleChange}
                 required
               />
-            </div>
-            <div className="form-group">
-              <input
-                className="form-control"
-                name="pw"
+              <Form.Input
+                name="password"
                 type="password"
                 placeholder="password"
-                value={ state.password}
+                value={state.password}
                 onChange={handleChange}
                 required
               />
-            </div>
-            <button
-              type="submit"
-              className="btn"
-              disabled={invalidForm}
-            >
-              Login
-            </button>
-          </form>
-
+              <Button
+                color="teal"
+                fluid
+                size="large"
+                type="submit"
+                className="btn"
+                disabled={invalidForm}
+              >
+                Login
+              </Button>
+            </Segment>
+          </Form>
+          <Message>
+            New to us? <Link to="/signup">Sign Up</Link>
+          </Message>
           {error ? <ErrorMessage error={error} /> : null}
-        </>
-      );
+        </Grid.Column>
+      </Grid>
+    </>
+  );
 }
-
