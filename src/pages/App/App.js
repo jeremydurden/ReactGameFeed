@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
+import userService from "../../utils/userService";
+//pages
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
-import userService from "../../utils/userService";
-
-function App() {
+import Home from "../Home/Home";
+//components
+function App(props) {
   const [user, setUser] = useState(userService.getUser());
   function handleSignupOrLogin() {
     console.log("hello, this is handleSignUpOrLogin");
@@ -16,7 +18,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/">
-          <h1>Home Page</h1>
+          <Home user={user} />
         </Route>
         <Route exact path="/login">
           <LoginPage handleSignupOrLogin={handleSignupOrLogin} />
