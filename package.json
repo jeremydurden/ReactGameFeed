@@ -8,8 +8,10 @@
     "@testing-library/user-event": "^7.2.1",
     "aws-sdk": "^2.828.0",
     "bcrypt": "^5.0.0",
+    "components": "^0.1.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "framer-motion": "^3.2.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.8",
     "morgan": "^1.10.0",
@@ -21,6 +23,7 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.2",
     "serve-favicon": "^2.5.0",
+    "styled": "^1.0.0",
     "uuid": "^8.3.2"
   },
   "scripts": {
