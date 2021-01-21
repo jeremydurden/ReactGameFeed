@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { useHistory, Link } from "react-router-dom";
 
 const Searchbar = (props) => {
   const [gameTitle, setGameTitle] = useState("");
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     console.log("handleSubmit clicked");
     e.preventDefault();
     props.handleSubmit(gameTitle);
     setGameTitle("");
+    history.push("/searchfeed");
   };
   const handleChange = (e) => {
     console.log("handleChange clicked");

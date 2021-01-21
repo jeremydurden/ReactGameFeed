@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 import userService from "../../utils/userService";
 //pages
@@ -8,26 +8,30 @@ import LoginPage from "../LoginPage/LoginPage";
 import Home from "../Home/Home";
 //components
 //API function
-import { popularGamesURL } from "../../utils/gameService";
+import {
+  popularGamesURL,
+  upcomingGamesURL,
+  newGamesURL,
+} from "../../utils/gameService";
 
 ///////////
 
 function App(props) {
   const [user, setUser] = useState(userService.getUser());
-  const [gameData, setGameData] = useState("");
+  const [gameData, setGameData] = useState(null);
   const [popularData, setPopularData] = useState();
-  const [gameTitle, setGameTitle] = useState("");
+  const [newGamesData, setNewGamesData] = useState();
+  const [upcomingData, setUpcomingData] = useState();
+  const [gameTitle, setGameTitle] = useState(null);
   function handleSignupOrLogin() {
     console.log("hello, this is handleSignUpOrLogin");
     setUser(userService.getUser());
   }
 
   const handleSubmit = (title) => {
-    console.log("App - make Api Call - title", title);
+    console.log("handlesubmit", title);
     setGameTitle(title);
-    // after our api call we'll set our movieData
   };
-
   useEffect(() => {
     console.log("popgames fetch");
     console.log(popularGamesURL());
@@ -40,29 +44,56 @@ function App(props) {
   }, []);
 
   useEffect(() => {
-    console.log(gameTitle, " useEffect");
+    console.log("newgames fetch");
+    console.log(newGamesURL());
+    fetch(newGamesURL())
+      .then((res) => res.json())
+      .then((newGamesData) => {
+        console.log(newGamesData, "this is newGamesData");
+        setNewGamesData(newGamesData);
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log("upcomging games fetch");
+    console.log(upcomingGamesURL());
+    fetch(upcomingGamesURL())
+      .then((res) => res.json())
+      .then((upcomingData) => {
+        console.log(upcomingData, "this is popular data");
+        setUpcomingData(upcomingData);
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log(gameTitle, " useEffect - why?");
     const gameUrl = `https://rawg.io/api/games?search=${gameTitle}&page_size=6`;
     fetch(gameUrl)
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "this is data");
-        setGameData(data);
+        if (gameTitle == null) {
+        } else {
+          setGameData(data);
+        }
       });
   }, [gameTitle]);
 
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/">
-          {gameData.results ? (
+        <Route path="/">
+          {popularData && upcomingData && newGamesData ? (
             <Home
               user={user}
               handleSubmit={handleSubmit}
               popularData={popularData}
+              newGamesData={newGamesData}
+              upcomingData={upcomingData}
               gameData={gameData}
             />
           ) : (
-            ""
+            <div>hello</div>
           )}
         </Route>
         <Route exact path="/login">
