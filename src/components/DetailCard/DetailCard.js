@@ -18,7 +18,6 @@ const DetailCard = ({ gameData, popularData, newGamesData, upcomingData }) => {
               alt=""
             />
             <div>{title.name}</div>
-            <div>{title.rating}</div>
           </div>
         );
       })}

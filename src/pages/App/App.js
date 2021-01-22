@@ -32,6 +32,11 @@ function App(props) {
     console.log("handlesubmit", title);
     setGameTitle(title);
   };
+
+  const resetGameData = () => {
+    setGameData(null);
+  };
+
   useEffect(() => {
     console.log("popgames fetch");
     console.log(popularGamesURL());
@@ -91,6 +96,7 @@ function App(props) {
               newGamesData={newGamesData}
               upcomingData={upcomingData}
               gameData={gameData}
+              resetGameData={resetGameData}
             />
           ) : (
             <div>hello</div>

@@ -11,6 +11,7 @@ const Home = ({
   gameData,
   newGamesData,
   upcomingData,
+  resetGameData,
 }) => {
   console.log(popularData, "this is from home");
   return (
@@ -21,7 +22,7 @@ const Home = ({
         <Redirect to="/login" />
       ) : (
         <>
-          <Header />
+          <Header resetGameData={resetGameData} />
           <Sidebar />
           <Feed
             handleSubmit={handleSubmit}
