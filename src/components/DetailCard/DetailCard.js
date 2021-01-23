@@ -1,26 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 //import "./PreviewCard.scss";
 
-const DetailCard = ({ gameData, popularData, newGamesData, upcomingData }) => {
-  const popular = popularData;
-  const game = gameData;
-
+const DetailCard = ({
+  name,
+  rating,
+  description,
+  esrb,
+  developers,
+  platforms,
+  screenShot,
+}) => {
   return (
-    <div className="flex-box">
-      {popular.results.map((title, i) => {
-        return (
-          <div className="col" key={i}>
-            <img
-              style={{ width: "40vh", height: "auto" }}
-              src={title.short_screenshots[0].image}
-              alt=""
-            />
-            <div>{title.name}</div>
-          </div>
-        );
-      })}
+    <div>
+      <h3>{name}</h3>
+      <h5>ESRB rating: {esrb}</h5>
+      <h5>Score: {rating}</h5>
+      <h5>Developer:</h5>
+      {developers.map((developer) => (
+        <h5>{developer.name}</h5>
+      ))}
+      <p>Platforms:</p>
+      {platforms.map((platform) => (
+        <span key={platform.platform.id}>{platform.platform.name}// </span>
+      ))}
+      <h5>Description</h5>
+      <p>{description}</p>
     </div>
   );
 };

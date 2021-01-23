@@ -12,12 +12,13 @@ const Home = ({
   newGamesData,
   upcomingData,
   resetGameData,
+  getGameId,
+  gameDetails,
+  gameId,
+  screenShots,
 }) => {
-  console.log(popularData, "this is from home");
   return (
     <>
-      <div>this is the homepage</div>
-
       {!user ? (
         <Redirect to="/login" />
       ) : (
@@ -30,6 +31,10 @@ const Home = ({
             gameData={gameData}
             newGamesData={newGamesData}
             upcomingData={upcomingData}
+            getGameId={getGameId}
+            gameDetails={gameDetails}
+            gameId={gameId}
+            screenShots={screenShots}
           />
         </>
       )}

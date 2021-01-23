@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const Header = ({ resetGameData }) => {
   return (
     <>
-      <div className="Header">this is the Header</div>
       <Link
         onClick={() => {
           resetGameData();
