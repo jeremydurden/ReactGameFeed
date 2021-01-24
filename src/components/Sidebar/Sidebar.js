@@ -1,11 +1,34 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SidebarCard from "../../components/SidebarCard/SidebarCard";
 
-const Sidebar = () => {
+const Sidebar = ({ resetGameData }) => {
   return (
     <>
-      <div className="Sidebar">this is the Sidebar</div>
-      <SidebarCard />
+      <Link
+        onClick={() => {
+          resetGameData();
+        }}
+        to="/"
+      >
+        <div>POPULAR GAMES</div>
+      </Link>
+      <Link
+        onClick={() => {
+          resetGameData();
+        }}
+        to="/newgames"
+      >
+        <div>NEW GAMES</div>
+      </Link>
+      <Link
+        onClick={() => {
+          resetGameData();
+        }}
+        to="/upcominggames"
+      >
+        <div>UPCOMING GAMES</div>
+      </Link>
     </>
   );
 };

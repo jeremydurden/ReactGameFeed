@@ -43,7 +43,7 @@ const lastMonth = getLastMonth();
 
 const POPULAR_GAMES = `games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=9`;
 const UPCOMING_GAMES = `games?dates=${currentDate},${nextYear}&ordering=-added&page_size=9`;
-const NEW_GAMES = `games?dates=${lastMonth},${currentDate}&ordering=-released&page_size=9`;
+const NEW_GAMES = `games?dates=${lastMonth},${currentDate}&ordering=-rating&page_size=9`;
 
 export const popularGamesURL = () => `${BASE_URL}${POPULAR_GAMES}`;
 export const upcomingGamesURL = () => `${BASE_URL}${UPCOMING_GAMES}`;

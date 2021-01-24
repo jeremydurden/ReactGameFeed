@@ -25,63 +25,109 @@ const Feed = ({
       </Route>
       {gameData ? (
         <Route exact path="/searchfeed">
-          <h2>RESULTS</h2>
-          {gameData.results.map((game, i) => (
-            <PreviewCard
-              key={i}
-              name={game.name}
-              released={game.released}
-              id={game.id}
-              image={game.background_image}
-              getGameId={getGameId}
-            />
-          ))}
+          <Container>
+            <h2>RESULTS</h2>
+            <Grid>
+              {gameData.results.map((game, i) => (
+                <PreviewCard
+                  key={i}
+                  name={game.name}
+                  released={game.released}
+                  id={game.id}
+                  image={game.background_image}
+                  getGameId={getGameId}
+                />
+              ))}
+            </Grid>
+          </Container>
         </Route>
       ) : (
         ""
       )}
-      <Route exact path="/">
-        <h2>POPULAR GAMES</h2>
-        {popularData.results.map((game, i) => (
-          <PreviewCard
-            key={i}
-            name={game.name}
-            released={game.released}
-            id={game.id}
-            image={game.background_image}
-            getGameId={getGameId}
-          />
-        ))}
+      <Route exact path="/newgames">
+        <Container>
+          <h2>NEW GAMES</h2>
+          <Grid>
+            {newGamesData.results.map((game, i) => (
+              <PreviewCard
+                key={i}
+                name={game.name}
+                released={game.released}
+                id={game.id}
+                image={game.background_image}
+                getGameId={getGameId}
+              />
+            ))}
+          </Grid>
+        </Container>
       </Route>
       <Route exact path="/">
-        <h2>UPCOMING GAMES</h2>
-        {upcomingData.results.map((game, i) => (
-          <PreviewCard
-            key={i}
-            name={game.name}
-            released={game.released}
-            id={game.id}
-            image={game.background_image}
-            getGameId={getGameId}
-          />
-        ))}
+        <Container>
+          <h2>POPULAR GAMES</h2>
+          <Grid>
+            {popularData.results.map((game, i) => (
+              <PreviewCard
+                key={i}
+                name={game.name}
+                released={game.released}
+                id={game.id}
+                image={game.background_image}
+                getGameId={getGameId}
+              />
+            ))}
+          </Grid>
+        </Container>
       </Route>
-      {gameDetails ? (
-        <DetailCard
-          key={gameDetails.id}
-          name={gameDetails.name}
-          rating={gameDetails.rating}
-          description={gameDetails.description_raw}
-          esrb={gameDetails.esrb_rating.name}
-          developers={gameDetails.developers}
-          platforms={gameDetails.platforms}
-          screenShots={screenShots}
-        />
-      ) : (
-        ""
-      )}
+      <Route exact path="/upcominggames">
+        <Container>
+          <h2>UPCOMING GAMES</h2>
+          <Grid>
+            {upcomingData.results.map((game, i) => (
+              <PreviewCard
+                key={i}
+                name={game.name}
+                released={game.released}
+                id={game.id}
+                image={game.background_image}
+                getGameId={getGameId}
+              />
+            ))}
+          </Grid>
+        </Container>
+      </Route>
+      <Route exact path="/details">
+        {gameDetails && screenShots ? (
+          <DetailCard
+            gameDetails={gameDetails}
+            key={gameDetails.id}
+            name={gameDetails.name}
+            rating={gameDetails.rating}
+            description={gameDetails.description_raw}
+            developers={gameDetails.developers}
+            platforms={gameDetails.platforms}
+            screenShots={screenShots}
+          />
+        ) : (
+          "Loading...."
+        )}
+      </Route>
     </>
   );
 };
 
 export default Feed;
+
+const Container = styled.div`
+  padding: 0rem 5rem;
+  h2 {
+    padding: 5rem 05rem;
+  }
+`;
+
+const Grid = styled.div`
+  min-height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-column-gap: 3rem;
+  grid-row-gap: 5rem;
+`;

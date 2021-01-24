@@ -1,25 +1,31 @@
 import React from "react";
-import { Link, useParams, useRouteMatch } from "react-router-dom";
-import DetailCard from "../DetailCard/DetailCard";
+import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
 
 //import "./PreviewCard.scss";
 
 const PreviewCard = ({ name, released, id, image, getGameId }) => {
   return (
-    <div>
+    <Container>
       <Link
-        to="details/:id"
+        to="details/"
         onClick={() => {
           console.log(id, "this is the id");
           getGameId(id);
         }}
       >
-        <img style={{ width: "40vh", height: "auto" }} src={image} alt={name} />
+        <img src={image} alt={name} />
         <h3>{name}</h3>
         <p>Release Date: {released}</p>
       </Link>
-    </div>
+    </Container>
   );
 };
 
 export default PreviewCard;
+
+const Container = styled.div`
+  img {
+    width: 100%;
+  }
+`;

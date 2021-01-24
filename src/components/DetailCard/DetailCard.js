@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-
-//import "./PreviewCard.scss";
-
+import React from "react";
+import { Redirect } from "react-router-dom";
+import SimpleSlider from "../../components/SimpleSlider/SimpleSlider";
+import styled, { css } from "styled-components";
 const DetailCard = ({
   name,
   rating,
   description,
-  esrb,
   developers,
   platforms,
-  screenShot,
+  screenShots,
+  gameDetails,
 }) => {
   return (
     <div>
       <h3>{name}</h3>
-      <h5>ESRB rating: {esrb}</h5>
+      <SimpleSlider screenShots={screenShots} />
+      <h5>
+        ESRB rating:{"  "}
+        {gameDetails.esrb_rating ? gameDetails.esrb_rating.name : "N/A"}
+      </h5>
       <h5>Score: {rating}</h5>
       <h5>Developer:</h5>
       {developers.map((developer) => (

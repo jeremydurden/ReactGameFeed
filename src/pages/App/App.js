@@ -1,11 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
+import styled, { css } from "styled-components";
 import "./App.css";
 import userService from "../../utils/userService";
-//pages
+
+//pages & components
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import Home from "../Home/Home";
+
 //API function
 import {
   popularGamesURL,
@@ -36,6 +39,7 @@ function App(props) {
 
   const resetGameData = () => {
     setGameData(null);
+    setGameDetails(null);
   };
 
   const getGameId = (id) => {

@@ -10,12 +10,12 @@ const Header = ({ resetGameData }) => {
         }}
         to="/"
       >
-        home link
+        HOME
       </Link>
       <span> </span>
-      <Link to="/signup">Sign Up</Link>
+      <Link to="/signup">SIGN UP</Link>
       <span> </span>
-      <Link to="/login">Login</Link>
+      <Link to="/login">LOGIN</Link>
     </>
   );
 };
