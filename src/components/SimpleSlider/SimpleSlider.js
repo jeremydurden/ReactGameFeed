@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { smallImage } from "../../utils/gameService";
 
 export default function SimpleSlider({ screenShots }) {
   var settings = {
@@ -17,7 +18,7 @@ export default function SimpleSlider({ screenShots }) {
         <img
           style={{ width: "40vh", height: "auto" }}
           key={picture.id}
-          src={picture.image}
+          src={smallImage(picture.image, 1280)}
           alt="screen shot"
         />
       ))}

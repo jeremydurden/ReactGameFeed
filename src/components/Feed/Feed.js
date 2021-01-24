@@ -120,12 +120,12 @@ export default Feed;
 const Container = styled.div`
   padding: 0rem 5rem;
   h2 {
-    padding: 5rem 05rem;
+    padding: 5rem 5rem;
   }
 `;
 
 const Grid = styled.div`
-  min-height: 80vh;
+  min-height: 75vh;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-column-gap: 3rem;

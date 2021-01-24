@@ -2,6 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import SimpleSlider from "../../components/SimpleSlider/SimpleSlider";
 import styled, { css } from "styled-components";
+
 const DetailCard = ({
   name,
   rating,

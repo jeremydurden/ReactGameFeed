@@ -48,3 +48,16 @@ const NEW_GAMES = `games?dates=${lastMonth},${currentDate}&ordering=-rating&page
 export const popularGamesURL = () => `${BASE_URL}${POPULAR_GAMES}`;
 export const upcomingGamesURL = () => `${BASE_URL}${UPCOMING_GAMES}`;
 export const newGamesURL = () => `${BASE_URL}${NEW_GAMES}`;
+
+export const smallImage = (imagePath, size) => {
+  if (imagePath) {
+    const image = imagePath.match(/media\/screenshots/)
+      ? imagePath.replace(
+          "media/screenshots",
+          `media/resize/${size}/-/screenshots`
+        )
+      : imagePath.replace("/media/games/", `/media/resize/${size}/-/games/`);
+    return image;
+  }
+  return imagePath;
+};
