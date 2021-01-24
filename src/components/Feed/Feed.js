@@ -125,7 +125,7 @@ const Container = styled.div`
 `;
 
 const Grid = styled.div`
-  min-height: 75vh;
+  min-height: 80vh;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-column-gap: 3rem;

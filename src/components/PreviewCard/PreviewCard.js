@@ -26,17 +26,23 @@ const PreviewCard = ({ name, released, id, image, getGameId }) => {
 export default PreviewCard;
 
 const Container = styled.div`
+  min-height: 20vh;
   background: white;
   background: linear-gradient(
     to right bottom,
     rgba(255, 255, 255, 0.75),
-    rgba(255, 255, 255, 0.25)
+    rgba(255, 255, 255, 0.15)
   );
   img {
     width: 95%;
     border-radius: 1rem;
+    padding: 0rem 0rem 1.5rem 0rem;
   }
   border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
 `;
 
 const Title = styled.div`
