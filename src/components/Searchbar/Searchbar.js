@@ -26,6 +26,7 @@ const Searchbar = (props) => {
           <StyledSearch
             id="gameTitle"
             type="text"
+            placeholder="Search"
             value={gameTitle}
             onChange={handleChange}
           />
@@ -56,8 +57,15 @@ const StyledSearch = styled.input`
   border: 0.25px solid#0c54f7;
   border-radius: 4px;
   margin: 1em;
-  height: 2.25em;
+  height: 2.34em;
   width: 15em;
   font-size: 24;
   color: #0c54f7;
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    color: #0c54f7;
+  }
+  :-ms-input-placeholder {
+    color: #0c54f7;
+  }
 `;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import userService from "../../utils/userService";
 
-const Header = ({ resetGameData }) => {
+const Header = ({ resetGameData, user }) => {
   let token = localStorage.getItem("token");
 
   function handleLogOut() {
@@ -72,6 +72,7 @@ const Header = ({ resetGameData }) => {
                 href="/"
               >
                 <LoginSpan>LOGOUT</LoginSpan>
+                <Avatar src={user.photoUrl} alt={user.name} />
               </a>
             </div>
           )}
@@ -128,4 +129,10 @@ const NewGameSpan = styled.span`
 const SpanStyle = styled.span`
   font-size: 1.25rem;
   color: #0c59f6;
+`;
+const Avatar = styled.img`
+  margin-left: 1rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
 `;
