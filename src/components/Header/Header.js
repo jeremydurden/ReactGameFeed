@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
+import userService from "../../utils/userService";
 
 const Header = ({ resetGameData }) => {
+  let token = localStorage.getItem("token");
+
+  function handleLogOut() {
+    userService.logout();
+  }
   return (
     <>
       <Style>
@@ -44,16 +50,31 @@ const Header = ({ resetGameData }) => {
           </Link>
         </GroupTwo>
         <GroupThree>
-          <div>
-            <Link to="/signup">
-              <SpanStyle>SIGN UP</SpanStyle>
-            </Link>
-          </div>
-          <div>
-            <Link to="/login">
-              <LoginSpan>LOGIN</LoginSpan>
-            </Link>
-          </div>
+          {!token ? (
+            <>
+              <div>
+                <Link to="/signup">
+                  <SpanStyle>SIGN UP</SpanStyle>
+                </Link>
+              </div>
+              <div>
+                <Link to="/login">
+                  <LoginSpan>LOGIN</LoginSpan>
+                </Link>
+              </div>
+            </>
+          ) : (
+            <div>
+              <a
+                onClick={() => {
+                  handleLogOut();
+                }}
+                href="/"
+              >
+                <LoginSpan>LOGOUT</LoginSpan>
+              </a>
+            </div>
+          )}
         </GroupThree>
       </Style>
     </>

@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./SignupPage.css";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
+import { Form, Grid, Header, Image, Segment } from "semantic-ui-react";
 import { useForm } from "../../hooks/useForm";
 import userService from "../../utils/userService";
 import { useHistory } from "react-router-dom";
+import styled, { css } from "styled-components";
 
 export default function SignupPage(props) {
   const [invalidForm, setValidForm] = useState(false);
@@ -74,7 +75,7 @@ export default function SignupPage(props) {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="teal" textAlign="center">
-            <h1 style={{ fontSize: 36, color: "#0CEAD8" }}>Sign Up</h1>
+            <h1 style={{ fontSize: 36, color: "white" }}>Sign Up</h1>
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Segment stacked>
@@ -110,7 +111,7 @@ export default function SignupPage(props) {
                 required
               />
               <Form.Field>
-                <h3 style={{ color: "#0CEAD8" }}>Upload a profile picture</h3>
+                <h3 style={{ color: "#0c54f7" }}>Upload a profile picture</h3>
                 <Form.Input
                   type="file"
                   name="photo"
@@ -118,16 +119,13 @@ export default function SignupPage(props) {
                   onChange={handleFileInput}
                 />
               </Form.Field>
-              <Button
+              <StyledButton
                 type="submit"
                 className="btn"
-                color="teal"
                 disabled={invalidForm}
               >
-                <span style={{ fontSize: 18, color: "#0C59F6" }}>
-                  Log-in to your account
-                </span>
-              </Button>
+                <span>Log-in to your account</span>
+              </StyledButton>
             </Segment>
             {error ? <ErrorMessage error={error} /> : null}
           </Form>
@@ -136,3 +134,13 @@ export default function SignupPage(props) {
     </>
   );
 }
+
+const StyledButton = styled.button`
+  background: linear-gradient(45deg, #0cedd7, #0c54f7);
+  color: white;
+  font-size: 1.25em;
+  margin: 1em;
+  padding: 0.5em 1.5em;
+  border: 2px solid white;
+  border-radius: 4px;
+`;

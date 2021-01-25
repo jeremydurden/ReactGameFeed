@@ -1,17 +1,10 @@
 import React, { useState } from "react";
-import "./LoginPage.css";
+
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import userService from "../../utils/userService";
 import { useHistory, Link } from "react-router-dom";
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Message,
-  Segment,
-} from "semantic-ui-react";
+import { Form, Grid, Header, Image, Message, Segment } from "semantic-ui-react";
+import styled, { css } from "styled-components";
 
 export default function LoginPage(props) {
   const [invalidForm, setValidForm] = useState(false);
@@ -55,7 +48,7 @@ export default function LoginPage(props) {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" textAlign="center">
-            <h1 style={{ color: "#0CEAD8" }}>Log-in to your account</h1>
+            <h1 style={{ color: "white" }}>Log-in to your account</h1>
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Segment stacked>
@@ -75,20 +68,22 @@ export default function LoginPage(props) {
                 onChange={handleChange}
                 required
               />
-              <Button
-                color="teal"
+              <StyledButton
                 fluid
                 size="large"
                 type="submit"
                 className="btn"
                 disabled={invalidForm}
               >
-                <span style={{ fontSize: 18, color: "#0C59F6" }}>Log-in</span>
-              </Button>
+                <span>Log-in</span>
+              </StyledButton>
             </Segment>
           </Form>
           <Message>
-            New to us? <Link to="/signup">Sign Up</Link>
+            <span style={{ color: "#0C59F6" }}>New to us?</span>{" "}
+            <Link to="/signup">
+              <span style={{ color: "#0cedd7" }}>Sign Up</span>
+            </Link>
           </Message>
           {error ? <ErrorMessage error={error} /> : null}
         </Grid.Column>
@@ -96,3 +91,13 @@ export default function LoginPage(props) {
     </>
   );
 }
+
+const StyledButton = styled.button`
+  background: linear-gradient(45deg, #0cedd7, #0c54f7);
+  color: white;
+  font-size: 1.25em;
+  margin: 1em;
+  padding: 0.5em 1.5em;
+  border: 2px solid white;
+  border-radius: 4px;
+`;

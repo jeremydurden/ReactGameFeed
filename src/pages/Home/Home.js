@@ -59,6 +59,7 @@ const Home = ({
 };
 
 const CircleWhite = styled.div`
+  z-index: 0;
   border-radius: 50%;
   background: white;
   background: linear-gradient(
@@ -70,6 +71,7 @@ const CircleWhite = styled.div`
   width: 40rem;
 `;
 const CircleColor = styled.div`
+  z-index: 0;
   border-radius: 50%;
   background: white;
   background: linear-gradient(
@@ -92,6 +94,7 @@ const Spin = keyframes`
 `;
 
 const Spin1 = styled.div`
+  z-index: 0;
   display: inline-block;
   animation: ${Spin} 10s linear infinite;
   padding: 2rem 1rem;
@@ -102,6 +105,7 @@ const Spin1 = styled.div`
 `;
 
 const Spin2 = styled.div`
+  z-index: 0;
   display: inline-block;
   animation: ${Spin} 10s linear infinite;
   padding: 2rem 1rem;
@@ -111,6 +115,7 @@ const Spin2 = styled.div`
   left: 5%;
 `;
 const Spin3 = styled.div`
+  z-index: 0;
   display: inline-block;
   animation: ${Spin} 10s linear infinite;
   padding: 2rem 1rem;
@@ -120,6 +125,7 @@ const Spin3 = styled.div`
   right: 5%;
 `;
 const Spin4 = styled.div`
+  z-index: 0;
   display: inline-block;
   animation: ${Spin} 10s linear infinite;
   padding: 2rem 1rem;
@@ -129,6 +135,7 @@ const Spin4 = styled.div`
   right: 25%;
 `;
 const Spin5 = styled.div`
+  z-index: 0;
   display: inline-block;
   animation: ${Spin} 10s linear infinite;
   padding: 2rem 1rem;
@@ -139,6 +146,7 @@ const Spin5 = styled.div`
 `;
 
 const Spin6 = styled.div`
+  z-index: 0;
   display: inline-block;
   animation: ${Spin} 10s linear infinite;
   padding: 2rem 1rem;

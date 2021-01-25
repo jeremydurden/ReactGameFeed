@@ -21,7 +21,7 @@ const Feed = ({
   return (
     <>
       <Route path="/">
-        <Searchbar handleSubmit={handleSubmit} />
+        <Searchbar handleSubmit={handleSubmit} style={{ zIndex: 5 }} />
       </Route>
       {gameData ? (
         <Route exact path="/searchfeed">

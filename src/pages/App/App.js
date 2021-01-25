@@ -127,7 +127,7 @@ function App(props) {
     <div className="App">
       <Switch>
         <Body>
-          <Header resetGameData={resetGameData} />
+          <Header user={user} resetGameData={resetGameData} />
           <Route exact path="/login">
             <LoginPage handleSignupOrLogin={handleSignupOrLogin} />
           </Route>
