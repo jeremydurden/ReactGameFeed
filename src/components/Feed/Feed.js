@@ -26,7 +26,7 @@ const Feed = ({
       {gameData ? (
         <Route exact path="/searchfeed">
           <Container>
-            <h2>RESULTS</h2>
+            <h1>RESULTS</h1>
             <Grid>
               {gameData.results.map((game, i) => (
                 <PreviewCard
@@ -48,7 +48,7 @@ const Feed = ({
       )}
       <Route exact path="/newgames">
         <Container>
-          <h2>NEW GAMES</h2>
+          <h1>NEW GAMES</h1>
           <Grid>
             {newGamesData.results.map((game, i) => (
               <PreviewCard
@@ -65,7 +65,7 @@ const Feed = ({
       </Route>
       <Route exact path="/">
         <Container>
-          <h2>POPULAR GAMES</h2>
+          <h1>POPULAR GAMES</h1>
           <Grid>
             {popularData.results.map((game, i) => (
               <PreviewCard
@@ -82,7 +82,7 @@ const Feed = ({
       </Route>
       <Route exact path="/upcominggames">
         <Container>
-          <h2>UPCOMING GAMES</h2>
+          <h1>UPCOMING GAMES</h1>
           <Grid>
             {upcomingData.results.map((game, i) => (
               <PreviewCard
@@ -121,8 +121,10 @@ export default Feed;
 
 const Container = styled.div`
   padding: 0rem 5rem;
-  h2 {
-    padding: 5rem 5rem;
+  h1 {
+    padding: 4rem 5rem;
+    color: #fffafa;
+    font-size: 5rem;
   }
 `;
 

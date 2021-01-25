@@ -17,7 +17,8 @@ import {
   newGamesURL,
 } from "../../utils/gameService";
 
-///////////
+///////////Font Awesome
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 function App(props) {
   const [user, setUser] = useState(userService.getUser());

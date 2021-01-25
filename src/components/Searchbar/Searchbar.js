@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
+import styled, { css } from "styled-components";
 
 const Searchbar = (props) => {
   const [gameTitle, setGameTitle] = useState("");
@@ -19,18 +20,24 @@ const Searchbar = (props) => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="gameTitle">Title:</label>
-        <input
-          id="gameTitle"
-          type="text"
-          value={gameTitle}
-          onChange={handleChange}
-        />
-        <input type="submit" value="Search for Games" />
-      </form>
+      <Search>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="gameTitle">Title:</label>
+          <input
+            id="gameTitle"
+            type="text"
+            value={gameTitle}
+            onChange={handleChange}
+          />
+          <input type="submit" value="Search for Games" />
+        </form>
+      </Search>
     </>
   );
 };
 
 export default Searchbar;
+
+const Search = styled.div`
+  margin: 4rem 0 0 0;
+`;

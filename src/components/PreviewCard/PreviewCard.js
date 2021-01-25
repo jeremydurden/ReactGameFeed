@@ -36,10 +36,10 @@ const Container = styled.div`
   );
   img {
     width: 95%;
-    border-radius: 1rem;
+    border-radius: 2rem 2rem 3rem 3rem;
     padding: 0rem 0rem 1.5rem 0rem;
   }
-  border-radius: 1rem;
+  border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4.5px);
@@ -47,7 +47,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-  color: #0e0ce8;
+  color: #0c59f6;
   padding: 2rem 0rem 1rem;
   font-size: 2rem;
 `;

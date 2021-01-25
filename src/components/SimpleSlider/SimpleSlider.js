@@ -16,15 +16,20 @@ export default function SimpleSlider({ screenShots }) {
     adaptiveHeight: true,
   };
   return (
-    <Slider {...settings}>
-      {screenShots.results.map((picture) => (
-        <img
-          style={{ width: "40vh", height: "auto" }}
-          key={picture.id}
-          src={picture.image}
-          alt="screen shot"
-        />
-      ))}
-    </Slider>
+    <>
+      {screenShots ? (
+        <Slider {...settings}>
+          {screenShots.results.map((picture) => (
+            <img
+              key={picture.id}
+              src={smallImage(picture.image, 1280)}
+              alt="screen shot"
+            />
+          ))}
+        </Slider>
+      ) : (
+        <span>Loading...</span>
+      )}
+    </>
   );
 }

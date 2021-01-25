@@ -35,6 +35,12 @@ const Home = ({
           <Spin4>
             <CircleColor></CircleColor>
           </Spin4>
+          <Spin5>
+            <CircleWhite></CircleWhite>
+          </Spin5>
+          <Spin6>
+            <CircleColor></CircleColor>
+          </Spin6>
           <Feed
             handleSubmit={handleSubmit}
             popularData={popularData}
@@ -122,4 +128,24 @@ const Spin4 = styled.div`
   top: 5%;
   right: 25%;
 `;
+const Spin5 = styled.div`
+  display: inline-block;
+  animation: ${Spin} 10s linear infinite;
+  padding: 2rem 1rem;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 90%;
+  right: 5%;
+`;
+
+const Spin6 = styled.div`
+  display: inline-block;
+  animation: ${Spin} 10s linear infinite;
+  padding: 2rem 1rem;
+  font-size: 1.2rem;
+  position: absolute;
+  bottom: 2%;
+  right: 7%;
+`;
+
 export default Home;
