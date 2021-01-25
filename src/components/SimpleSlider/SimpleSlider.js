@@ -21,7 +21,7 @@ export default function SimpleSlider({ screenShots }) {
         <img
           style={{ width: "40vh", height: "auto" }}
           key={picture.id}
-          src={smallImage(picture.image, 1280)}
+          src={picture.image}
           alt="screen shot"
         />
       ))}

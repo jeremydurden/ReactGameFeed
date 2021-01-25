@@ -16,7 +16,14 @@ const DetailCard = ({
     <>
       <FlexBox>
         <ImageContainer>
-          <SimpleSlider style={{ padding: "5rem" }} screenShots={screenShots} />
+          {screenShots ? (
+            <SimpleSlider
+              style={{ padding: "5rem" }}
+              screenShots={screenShots}
+            />
+          ) : (
+            "Loading"
+          )}
         </ImageContainer>
       </FlexBox>
       <Container>
@@ -28,11 +35,11 @@ const DetailCard = ({
         <h5>Score: {rating}</h5>
         <h5>Developer:</h5>
         {developers.map((developer) => (
-          <h5>{developer.name}</h5>
+          <p>{developer.name}</p>
         ))}
-        <p>Platforms:</p>
+        <h5>Platforms:</h5>
         {platforms.map((platform) => (
-          <span key={platform.platform.id}>{platform.platform.name}// </span>
+          <p key={platform.platform.id}>{platform.platform.name} </p>
         ))}
         <h5>Description</h5>
         <p>{description}</p>
@@ -44,7 +51,7 @@ const DetailCard = ({
 export default DetailCard;
 
 const Container = styled.div`
-  margin: -1rem 5rem;
+  margin: 5rem;
   background: white;
   background: linear-gradient(
     to right bottom,
@@ -59,7 +66,7 @@ const Container = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  margin: 5rem;
+  margin: 5rem 0rem 0.1rem 0rem;
   padding: 3rem;
   max-width: 87vh;
   background: white;

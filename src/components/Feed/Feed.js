@@ -42,7 +42,9 @@ const Feed = ({
           </Container>
         </Route>
       ) : (
-        ""
+        <Route exact path="/searchfeed">
+          "Loading"
+        </Route>
       )}
       <Route exact path="/newgames">
         <Container>

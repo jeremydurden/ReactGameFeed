@@ -74,7 +74,7 @@ export default function SignupPage(props) {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="teal" textAlign="center">
-            Sign Up
+            <h1 style={{ fontSize: 36, color: "#0CEAD8" }}>Sign Up</h1>
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Segment stacked>
@@ -110,9 +110,7 @@ export default function SignupPage(props) {
                 required
               />
               <Form.Field>
-                <span style={{ textAlign: "left" }}>
-                  Upload a profile Picture
-                </span>
+                <h3 style={{ color: "#0CEAD8" }}>Upload a profile picture</h3>
                 <Form.Input
                   type="file"
                   name="photo"
@@ -120,8 +118,15 @@ export default function SignupPage(props) {
                   onChange={handleFileInput}
                 />
               </Form.Field>
-              <Button type="submit" className="btn" disabled={invalidForm}>
-                Signup
+              <Button
+                type="submit"
+                className="btn"
+                color="teal"
+                disabled={invalidForm}
+              >
+                <span style={{ fontSize: 18, color: "#0C59F6" }}>
+                  Log-in to your account
+                </span>
               </Button>
             </Segment>
             {error ? <ErrorMessage error={error} /> : null}

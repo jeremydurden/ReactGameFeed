@@ -27,6 +27,7 @@ export default PreviewCard;
 
 const Container = styled.div`
   min-height: 20vh;
+
   background: white;
   background: linear-gradient(
     to right bottom,
@@ -46,6 +47,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
+  color: #0e0ce8;
   padding: 2rem 0rem 1rem;
   font-size: 2rem;
 `;

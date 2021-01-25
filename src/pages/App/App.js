@@ -8,6 +8,7 @@ import userService from "../../utils/userService";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import Home from "../Home/Home";
+import Header from "../../components/Header/Header";
 
 //API function
 import {
@@ -124,35 +125,43 @@ function App(props) {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/login">
-          <LoginPage handleSignupOrLogin={handleSignupOrLogin} />
-        </Route>
-        <Route exact path="/signup">
-          <SignupPage handleSignupOrLogin={handleSignupOrLogin} />
-        </Route>
-        <Route path="/">
-          {popularData && upcomingData && newGamesData ? (
-            <Home
-              user={user}
-              handleSubmit={handleSubmit}
-              popularData={popularData}
-              newGamesData={newGamesData}
-              upcomingData={upcomingData}
-              gameData={gameData}
-              resetGameData={resetGameData}
-              getGameId={getGameId}
-              gameDetails={gameDetails}
-              gameId={gameId}
-              screenShots={screenShots}
-            />
-          ) : (
-            <div>loading</div>
-          )}
-        </Route>
-        <Redirect to="/" />
+        <Body>
+          <Header resetGameData={resetGameData} />
+          <Route exact path="/login">
+            <LoginPage handleSignupOrLogin={handleSignupOrLogin} />
+          </Route>
+          <Route exact path="/signup">
+            <SignupPage handleSignupOrLogin={handleSignupOrLogin} />
+          </Route>
+          <Route path="/">
+            {popularData && upcomingData && newGamesData ? (
+              <Home
+                user={user}
+                handleSubmit={handleSubmit}
+                popularData={popularData}
+                newGamesData={newGamesData}
+                upcomingData={upcomingData}
+                gameData={gameData}
+                resetGameData={resetGameData}
+                getGameId={getGameId}
+                gameDetails={gameDetails}
+                gameId={gameId}
+                screenShots={screenShots}
+              />
+            ) : (
+              <div>loading</div>
+            )}
+          </Route>
+          <Redirect to="/" />
+        </Body>
       </Switch>
     </div>
   );
 }
 
 export default App;
+
+const Body = styled.body`
+  min-height: 100vh;
+  background: linear-gradient(45deg, #0cedd7, #0c54f7);
+`;

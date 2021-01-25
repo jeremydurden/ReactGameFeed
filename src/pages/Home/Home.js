@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Feed from "../../components/Feed/Feed";
 import { Redirect } from "react-router-dom";
@@ -24,48 +23,35 @@ const Home = ({
         <Redirect to="/login" />
       ) : (
         <>
-          <Body>
-            <Header resetGameData={resetGameData} />
-            <Sidebar resetGameData={resetGameData} />
-            <Spin1>
-              <CircleWhite></CircleWhite>
-            </Spin1>
-            <Spin2>
-              <CircleColor></CircleColor>
-            </Spin2>
-            <Spin3>
-              <CircleWhite></CircleWhite>
-            </Spin3>
-            <Spin4>
-              <CircleColor></CircleColor>
-            </Spin4>
-            <Feed
-              handleSubmit={handleSubmit}
-              popularData={popularData}
-              gameData={gameData}
-              newGamesData={newGamesData}
-              upcomingData={upcomingData}
-              getGameId={getGameId}
-              gameDetails={gameDetails}
-              gameId={gameId}
-              screenShots={screenShots}
-            />
-          </Body>
+          <Spin1>
+            <CircleWhite></CircleWhite>
+          </Spin1>
+          <Spin2>
+            <CircleColor></CircleColor>
+          </Spin2>
+          <Spin3>
+            <CircleWhite></CircleWhite>
+          </Spin3>
+          <Spin4>
+            <CircleColor></CircleColor>
+          </Spin4>
+          <Feed
+            handleSubmit={handleSubmit}
+            popularData={popularData}
+            gameData={gameData}
+            newGamesData={newGamesData}
+            upcomingData={upcomingData}
+            getGameId={getGameId}
+            gameDetails={gameDetails}
+            gameId={gameId}
+            screenShots={screenShots}
+          />
         </>
       )}
     </>
   );
 };
 
-const Body = styled.div`
-  min-height: 100vh;
-  background: linear-gradient(45deg, #0cedd7, #0c54f7);
-`;
-
-const Glass = styled.div`
-  background: white;
-  min-height: 10vh;
-`;
 const CircleWhite = styled.div`
   border-radius: 50%;
   background: white;
