@@ -56,9 +56,9 @@ const DetailCard = ({
       </FlexBox>
       <Container>
         <FlexBox2>
-          <FlexBox3>
+          <FlexBox4>
             <H1>{name}</H1>
-          </FlexBox3>
+          </FlexBox4>
           <h5>
             ESRB rating:{"  "}
             {gameDetails.esrb_rating ? gameDetails.esrb_rating.name : "N/A"}
@@ -71,18 +71,22 @@ const DetailCard = ({
         ))}
 
         <h5>Description</h5>
-        <P>{description}</P>
-        <h5>Platforms:</h5>
+        <FlexBox4>
+          <P>{description}</P>
+        </FlexBox4>
+        <h2>Platforms:</h2>
         {platforms.map((platform) => (
           <>
-            <h5>{platform.platform.name}</h5>
+            <StyledDiv>
+              <h5>{platform.platform.name}</h5>
 
-            <img
-              title={platform.platform.name}
-              alt={platform.platform.name}
-              key={platform.platform.id}
-              src={getPlatform(platform.platform.name)}
-            ></img>
+              <img
+                title={platform.platform.name}
+                alt={platform.platform.name}
+                key={platform.platform.id}
+                src={getPlatform(platform.platform.name)}
+              ></img>
+            </StyledDiv>
           </>
         ))}
       </Container>
@@ -131,16 +135,34 @@ const FlexBox2 = styled.div`
   flex-direction: row; ;
 `;
 const H1 = styled.h1`
-  color: #0c59f6;
   font-size: 3rem;
+
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 22px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  width: 25%;
 `;
-const P = styled.p`
+const P = styled.div`
+  font-size: 1.5em;
   color: #0c59f6;
+  line-height: 1.6;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 22px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  width: 80%;
 `;
-const FlexBox3 = styled.div`
-  color: #0c59f6;
+const StyledDiv = styled.div`
+  margin-bottom: 2rem;
 `;
 const FlexBox4 = styled.div`
+  margin-top: 1rem;
+  display: flex;
   flex-direction: row;
   justify-content: center;
 `;

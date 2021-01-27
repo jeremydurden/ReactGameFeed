@@ -163,6 +163,6 @@ function App(props) {
 export default App;
 
 const Body = styled.body`
-  min-height: 100vh;
+  min-height: 100%;
   background: linear-gradient(45deg, #0cedd7, #0c54f7);
 `;
