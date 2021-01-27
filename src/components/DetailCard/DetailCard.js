@@ -1,7 +1,14 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import SimpleSlider from "../../components/SimpleSlider/SimpleSlider";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+///icon images
+import playstation from "../../images/playstation.svg";
+import steam from "../../images/steam.svg";
+import xbox from "../../images/xbox.svg";
+
+import nintendo from "../../images/nintendo.svg";
+import apple from "../../images/apple.svg";
+import gamepad from "../../images/gamepad.svg";
 
 const DetailCard = ({
   name,
@@ -12,6 +19,27 @@ const DetailCard = ({
   screenShots,
   gameDetails,
 }) => {
+  const getPlatform = (platform) => {
+    switch (platform) {
+      case "PlayStation 4":
+        return playstation;
+      case "PlayStation 5":
+        return playstation;
+      case "Xbox Series S/X":
+        return xbox;
+      case "Xbox One":
+        return xbox;
+      case "PC":
+        return steam;
+      case "Nintendo Switch":
+        return nintendo;
+      case "iOS":
+        return apple;
+      default:
+        return gamepad;
+    }
+  };
+
   return (
     <>
       <FlexBox>
@@ -27,22 +55,36 @@ const DetailCard = ({
         </ImageContainer>
       </FlexBox>
       <Container>
-        <h3>{name}</h3>
-        <h5>
-          ESRB rating:{"  "}
-          {gameDetails.esrb_rating ? gameDetails.esrb_rating.name : "N/A"}
-        </h5>
+        <FlexBox2>
+          <FlexBox3>
+            <H1>{name}</H1>
+          </FlexBox3>
+          <h5>
+            ESRB rating:{"  "}
+            {gameDetails.esrb_rating ? gameDetails.esrb_rating.name : "N/A"}
+          </h5>
+        </FlexBox2>
         <h5>Score: {rating}</h5>
         <h5>Developer:</h5>
         {developers.map((developer) => (
           <p>{developer.name}</p>
         ))}
+
+        <h5>Description</h5>
+        <P>{description}</P>
         <h5>Platforms:</h5>
         {platforms.map((platform) => (
-          <p key={platform.platform.id}>{platform.platform.name} </p>
+          <>
+            <h5>{platform.platform.name}</h5>
+
+            <img
+              title={platform.platform.name}
+              alt={platform.platform.name}
+              key={platform.platform.id}
+              src={getPlatform(platform.platform.name)}
+            ></img>
+          </>
         ))}
-        <h5>Description</h5>
-        <p>{description}</p>
       </Container>
     </>
   );
@@ -83,5 +125,22 @@ const ImageContainer = styled.div`
 `;
 const FlexBox = styled.div`
   display: flex;
+  justify-content: center;
+`;
+const FlexBox2 = styled.div`
+  flex-direction: row; ;
+`;
+const H1 = styled.h1`
+  color: #0c59f6;
+  font-size: 3rem;
+`;
+const P = styled.p`
+  color: #0c59f6;
+`;
+const FlexBox3 = styled.div`
+  color: #0c59f6;
+`;
+const FlexBox4 = styled.div`
+  flex-direction: row;
   justify-content: center;
 `;

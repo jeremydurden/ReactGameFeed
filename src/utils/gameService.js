@@ -39,8 +39,6 @@ const getLastMonth = () => {
 
 const lastMonth = getLastMonth();
 
-//popular games
-
 const POPULAR_GAMES = `games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=12`;
 const UPCOMING_GAMES = `games?dates=${currentDate},${nextYear}&ordering=-added&page_size=12`;
 const NEW_GAMES = `games?dates=${lastMonth},${currentDate}&ordering=-rating&page_size=12`;
